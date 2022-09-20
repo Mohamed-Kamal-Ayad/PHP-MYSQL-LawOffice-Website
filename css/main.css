@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.card{
+    background-color: #333;
+}
+
+.home{
+    background-color: #444;
+    height: 100vh;
+}
+
+.dropdown-menu{
+   min-width: 40px !important;
+}
