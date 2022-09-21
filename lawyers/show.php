@@ -9,7 +9,7 @@ if (isset($_GET['show'])) {
     $lawyer = mysqli_query($connection, $select);
     $row =  mysqli_fetch_assoc($lawyer);
 }
-//auth(1, 2);
+authAdmin(1, 2);
 ?>
 <h2 class="text-center"> Show lawyer : <?= $row['name'] ?> </h2>
 

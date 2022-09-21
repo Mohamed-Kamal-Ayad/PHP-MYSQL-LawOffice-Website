@@ -20,7 +20,7 @@ if (isset($_POST['create'])) {
     $insert = "INSERT INTO `articales`(`id`, `title`, `description`, `auther`, `image`, `create_time`, `update_time`, `image_profile`) VALUES (Null,'$title','$description','$auther','$location1',DEFAULT,DEFAULT,'$location2')";
     $i = mysqli_query($connection, $insert);
     //testMessage($i, "ssws");
-    //header("location:list.php");
+    header("location:list.php");
 }
 
 

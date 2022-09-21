@@ -49,11 +49,11 @@ if (isset($_SESSION['adminid'])) {
             <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" required>
+                    <input type="text" class="form-control" value="<?= $row['name'] ?>" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" required>
+                    <input type="email" class="form-control" value="<?= $row['email'] ?>" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Old Password</label>
@@ -65,23 +65,23 @@ if (isset($_SESSION['adminid'])) {
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" class="form-control" name="age" required>
+                    <input type="number" class="form-control" value="<?= $row['age'] ?>" name="age" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" name="address" required>
+                    <input type="text" class="form-control" value="<?= $row['address'] ?>" name="address" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="tel" class="form-control" name="phone" required>
+                    <input type="tel" class="form-control" value="<?= $row['phone'] ?>" name="phone" required>
                 </div>
                 <div class="form-group">
                     <label for="salary">Salary</label>
-                    <input type="number" class="form-control" name="salary" required>
+                    <input type="number" class="form-control" value="<?= $row['salary'] ?>" name="salary" required>
                 </div>
                 <div class="form-group">
                     <label for="salary">years experience</label>
-                    <input type="number" class="form-control" name="yearsEx" required>
+                    <input type="number" class="form-control" value="<?= $row['yearsEX'] ?>" name="yearsEx" required>
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>

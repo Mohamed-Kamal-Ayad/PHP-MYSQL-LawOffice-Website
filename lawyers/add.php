@@ -21,7 +21,6 @@ if (isset($_POST['insert'])) {
     testMessage($s, "Insert lawyer");
     header("location:list.php#?return");
 }
-
 authAdmin(1, 2);
 
 ?>
