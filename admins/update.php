@@ -26,10 +26,13 @@ if (isset($_GET['edit'])) {
     $admin = mysqli_query($connection, $select);
     $row = mysqli_fetch_assoc($admin);
     if (isset($_POST['update'])) {
-        if (sha1($_POST['oldpassword']) == $row['password']) {
+        if (md5($_POST['oldpassword']) == $row['password']) {
             $name = $_POST['name'];
-            $password = sha1($_POST['newpassword']);
-            $role = $_POST['role'];
+            if(isset($_POST['newpassword'])) {
+                $password = md5($_POST['newpassword']);
+            } else {
+                $password = md5($_POST['oldpassword']);
+            }
             $age = $_POST['age'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
@@ -81,7 +84,7 @@ authAdmin(1, $_SESSION['adminRole']);
                 </div>
                 <div class="form-group">
                     <label for="password">New Password</label>
-                    <input type="password" class="form-control" name="newpassword" required>
+                    <input type="password" class="form-control" name="newpassword">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -108,7 +111,7 @@ authAdmin(1, $_SESSION['adminRole']);
                     <div class="col-auto my-1">
                         <label for="role">Admin role</label>
                         <select class="custom-select mr-sm-2" name="role">
-                            <option selected>Choose Admin role</option>
+                            <option selected required>Choose Admin role</option>
                             <?php foreach ($roles as $data) : ?>
                             <option value="<?= $data['id']; ?>">
                                 <?= $data['description']; ?>

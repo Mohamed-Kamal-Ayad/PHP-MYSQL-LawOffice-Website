@@ -13,12 +13,16 @@ if (isset($_GET['edit'])) {
         if (sha1($_POST['oldpassword']) == $row['password']) {
             $name = $_POST['name'];
             $email = $_POST['email'];
+            if(isset($_POST['newpassword'])) {
+                $password = md5($_POST['newpassword']);
+            } else {
+                $password = md5($_POST['oldpassword']);
+            }
             $salary = $_POST['salary'];
             $address = $_POST['address'];
             $age = $_POST['age'];
             $years = $_POST['yearsEx'];
             $phone = $_POST['phone'];
-
             if (empty($_FILES['image']['name'])) {
                 $location = $row['image'];
             } else {
@@ -28,9 +32,9 @@ if (isset($_GET['edit'])) {
                 move_uploaded_file($tmp_name, $location);
             }
 
-            $update = "UPDATE lawyers SET id = $id, `name` = '$name', salary = $salary, `address`='$address', age = $age, `image` = '$location', email = '$email', `$password` = 'password', yearsEX = $years WHERE id = $id";
+            $update = "UPDATE lawyers SET id = $id, `name` = '$name', salary = $salary, `address`='$address', age = $age, `image` = '$location', email = '$email', `password` = $password, yearsEX = $years WHERE id = $id";
             $u = mysqli_query($connection, $update);
-            header("location:list.php?#return");
+            //header("location:list.php?#return");
             testMessage($u, "Update lawyer");
         }
     }
@@ -61,7 +65,7 @@ if (isset($_SESSION['adminid'])) {
                 </div>
                 <div class="form-group">
                     <label for="password">New Password</label>
-                    <input type="password" class="form-control" name="newpassword" required>
+                    <input type="password" class="form-control" name="newpassword">
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>

@@ -12,14 +12,16 @@ if (isset($_GET['edit'])) {
     if (isset($_POST['update'])) {
         if (sha1($_POST['oldpassword']) == $row['password']) {
             $name = $_POST['name'];
-            $password = sha1($_POST['newpassword']);
-            $age = $_POST['age'];
+            if(isset($_POST['newpassword'])) {
+                $password = sha1($_POST['newpassword']);
+            } else {
+                $password = sha1($_POST['oldpassword']);
+            }            $age = $_POST['age'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
-            $update = "UPDATE users SET id = $id, `name` = '$name', phone = `$phone`, `address`='$address', age = $age, email = '$email', `password` = '$password' WHERE id = $id";
+            $update = "UPDATE users SET `name` = '$name', age = $age, `address`='$address', phone = '$phone',  email = '$email', `password` = '$password' WHERE id = $id";
             $u = mysqli_query($connection, $update);
-            header("location:list.php?#return");
             testMessage($u, "Update user");
         }
     }
@@ -30,7 +32,7 @@ if (isset($_SESSION['adminid'])) {
     authUser($_SESSION['userid']);
 }
 ?>
-<h1 class="text-center"> Upadate user </h1>
+<h1 class="text-center"> Update user </h1>
 <div class="container col-6">
     <div class="card">
         <div class="card-body">

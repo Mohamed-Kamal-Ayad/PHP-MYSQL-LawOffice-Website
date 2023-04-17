@@ -5,7 +5,7 @@ include '../general/env.php';
 include '../general/functions.php';
 if (isset($_POST['loginAdmin'])) {
     $name = $_POST['name'];
-    $password = sha1($_POST['password']);
+    $password = md5($_POST['password']);
     $email = $_POST['email'];
     $select = "SELECT * FROM admins where `name`= '$name' and `password` = '$password' and email = '$email'";
     $admin = mysqli_query($connection, $select);
