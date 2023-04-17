@@ -4,7 +4,7 @@ include '../shared/nav.php';
 include '../general/env.php';
 include '../general/functions.php';
 
-$select = "select * from articales";
+$select = "SELECT * FROM articales";
 $s = mysqli_query($connection, $select);
 
 ?>
