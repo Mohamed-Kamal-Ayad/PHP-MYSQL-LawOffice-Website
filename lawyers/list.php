@@ -19,16 +19,16 @@ if (isset($_GET['delete'])) {
 if (isset($_GET['search'])) {
     $searchName = $_GET['searchName'];
     if (isset($_GET['salary'])) {
-        $select = "SELECT * FROM `lawyers` WHERE `name` LIKE '%$searchName%' ORDER BY salary DESC";
+        $select = "SELECT * FROM `lawyers` JOIN services ON services.lawyerid = lawyers.id WHERE `name` LIKE '%$searchName%' ORDER BY salary DESC";
         $filter = mysqli_query($connection, $select);
     } else {
-        $select = "SELECT * FROM `lawyers` WHERE `name` LIKE '%$searchName%'";
+        $select = "SELECT * FROM `lawyers` JOIN services ON services.lawyerid = lawyers.id WHERE `name` LIKE '%$searchName%'";
         $filter = mysqli_query($connection, $select);
     }
 }
 
 
-$selectUsers = "SELECT * FROM `lawyers`";
+$selectUsers = "SELECT * FROM `lawyers` JOIN services ON services.lawyerid = lawyers.id";
 $lawyers = mysqli_query($connection, $selectUsers);
 authAdmin(1, 2, 3);
 ?>
@@ -53,6 +53,7 @@ authAdmin(1, 2, 3);
                     <tr>
                         <th> id </th>
                         <th> lawyer Name</th>
+                        <th> Service</th>
                         <th> Action</th>
                     </tr>
 
@@ -62,6 +63,7 @@ authAdmin(1, 2, 3);
                     <tr>
                         <td><?= $data['id']; ?></td>
                         <td><?= $data['name']; ?></td>
+                        <td><?= $data['title']; ?></td>
                         <td>
                             <?php if ($_SESSION['adminRole'] == 1 || $_SESSION['adminRole'] == 2) :
                                     ?>
@@ -96,6 +98,7 @@ authAdmin(1, 2, 3);
                     <tr>
                         <th> id </th>
                         <th> lawyer Name</th>
+                        <th> Service</th>
                         <th> Action</th>
                     </tr>
 
@@ -106,6 +109,7 @@ authAdmin(1, 2, 3);
                     <tr>
                         <td><?= $data['id']; ?></td>
                         <td><?= $data['name']; ?></td>
+                        <td><?= $data['title']; ?></td>
                         <td>
                             <?php if ($_SESSION['adminRole'] == 1 || $_SESSION['adminRole'] == 2) :
                                     ?>

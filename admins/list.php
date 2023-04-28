@@ -16,7 +16,7 @@ if (isset($_GET['delete'])) {
     testMessage($d, "Delete Admin");
 }
 
-$selectAdmins = "SELECT * FROM `admins`";
+$selectAdmins = "SELECT * FROM `admins` JOIN `roles` ON admins.role = roles.id";
 $admins = mysqli_query($connection, $selectAdmins);
 authAdmin(1, 2, 3);
 ?>
@@ -39,7 +39,7 @@ authAdmin(1, 2, 3);
                     <tr>
                         <td><?= $data['id']; ?></td>
                         <td><?= $data['name']; ?></td>
-                        <td><?= $data['role']; ?></td>
+                        <td><?= $data['description']; ?></td>
                         <td>
                             <?php if ($_SESSION['adminRole'] == 1) :
                                 ?>

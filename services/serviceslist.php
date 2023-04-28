@@ -16,9 +16,11 @@ $ss = mysqli_query($connection, $join)
         <div class="card-body">
             <h5 class="card-title"><?= $servicess['title']; ?></h5>
             <h5 class="card-title"><?= $servicess['lawyername']; ?></h5>
-            <button class="btn btn-info">Order</button>
+            <?php if (isset($_SESSION['userid'])) : ?>
+                <a href="../orders/add.php?id=<?= $servicess['servId']; ?>" class="btn btn-primary">Order</a>
+            <?php endif; ?>
             <p class="card-text"></p>
-            <pre style="color:white ;"></pre>
+            <pre style="color:white;"></pre>
         </div>
     </div>
 </div>
