@@ -11,7 +11,7 @@ if (isset($_POST['insert'])) {
     $age = $_POST['age'];
     $years = $_POST['yearsEx'];
     $phone = $_POST['phone'];
-    $service_id = $_POST['service_id'];
+    $service_id = $_POST['serviceid'];
     $password = sha1($_POST['password']);
     $image_name = time() . $_FILES['image']['name'];
     $tmp_name = $_FILES['image']['tmp_name'];

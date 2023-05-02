@@ -19,16 +19,16 @@ if (isset($_GET['delete'])) {
 if (isset($_GET['search'])) {
     $searchName = $_GET['searchName'];
     if (isset($_GET['salary'])) {
-        $select = "SELECT * FROM `lawyers` JOIN services ON services.lawyerid = lawyers.id WHERE `name` LIKE '%$searchName%' ORDER BY salary DESC";
+        $select = "SELECT lawyers.id AS id, lawyers.name AS name, services.title AS title From `lawyers` JOIN services ON services.id = lawyers.service_id WHERE `name` LIKE '%$searchName%' ORDER BY salary DESC";
         $filter = mysqli_query($connection, $select);
     } else {
-        $select = "SELECT * FROM `lawyers` JOIN services ON services.lawyerid = lawyers.id WHERE `name` LIKE '%$searchName%'";
+        $select = "SELECT lawyers.id AS id, lawyers.name AS name, services.title AS title From `lawyers` JOIN services ON services.id = lawyers.service_id WHERE `name` LIKE '%$searchName%'";
         $filter = mysqli_query($connection, $select);
     }
 }
 
 
-$selectUsers = "SELECT * FROM `lawyers` JOIN services ON services.id = lawyers.service_id";
+$selectUsers = "SELECT lawyers.id AS id, lawyers.name AS name, services.title AS title FROM lawyers JOIN services ON services.id = lawyers.service_id";
 $lawyers = mysqli_query($connection, $selectUsers);
 authAdmin(1, 2, 3);
 ?>
