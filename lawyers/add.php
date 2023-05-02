@@ -20,7 +20,6 @@ if (isset($_POST['insert'])) {
     $insert = "INSERT INTO `lawyers`(`id`, `name`, `age`, `address`, `salary`, `yearsEX`, `phone`, `email`, `password`, `image`, `service_id`) VALUES (NULL,'$name','$age','$address',$salary,'$years','$phone','$email','$password','$location',$service_id)";
     $s = mysqli_query($connection, $insert);
     testMessage($s, "Insert lawyer");
-    header("location:list.php#?return");
 }
 
 $selServices = "SELECT * FROM services";

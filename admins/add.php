@@ -19,7 +19,6 @@ if (isset($_POST['add'])) {
     $insert = "INSERT INTO `admins`(`id`,`name`, `age`, `address`, `phone`, `email`, `password`, `image`, `role`) VALUES (NULL,'$name',$age,'$address','$phone','$email','$password','$location',$role)";
     $s = mysqli_query($connection, $insert);
     testMessage($s, "Insert Admin");
-    header("location:list.php#?return");
 }
 $select = "SELECT * FROM `roles`";
 $roles = mysqli_query($connection, $select);
