@@ -4,15 +4,13 @@ include '../shared/header.php';
 include '../shared/nav.php';
 include '../general/env.php';
 include '../general/functions.php';
-$select = "SELECT * FROM services WHERE id = " . $_GET['id'];
-$s = mysqli_query($connection, $select);
 if (isset($_POST['order'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
     if (isset($_SESSION['userid'])) {
         $userid = $_SESSION['userid'];
     }
-    $insert = "INSERT INTO orders VALUES(Null, '$title', '$description', " . $userid . ", " . $_GET['id'] . ")";
+    $insert = "INSERT INTO orders VALUES(Null, '$title', '$description', " . $userid . ", " . $_GET['service_id'] . " , " . $_GET['lawyer_id'] . ")";
     $i = mysqli_query($connection, $insert);
     testMessage($i, "Order");
 }

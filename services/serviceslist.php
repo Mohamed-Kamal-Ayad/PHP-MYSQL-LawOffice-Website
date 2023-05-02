@@ -4,7 +4,7 @@ include '../general/env.php';
 include '../general/functions.php';
 
 $select = "select * from services";
-$join = "SELECT services.id servId, services.title title, lawyers.name lawyername, lawyers.image img FROM services JOIN lawyers ON services.id = lawyers.service_id";
+$join = "SELECT services.id servId, services.title title, lawyers.name lawyername, lawyers.image img , lawyers.id lawyerId FROM services JOIN lawyers ON services.id = lawyers.service_id";
 $s = mysqli_query($connection, $select);
 $ss = mysqli_query($connection, $join)
 ?>
@@ -17,7 +17,7 @@ $ss = mysqli_query($connection, $join)
             <h5 class="card-title"><?= $servicess['title']; ?></h5>
             <h5 class="card-title"><?= $servicess['lawyername']; ?></h5>
             <?php if (isset($_SESSION['userid'])) : ?>
-                <a href="../orders/add.php?id=<?= $servicess['servId']; ?>" class="btn btn-primary">Order</a>
+                <a href="../orders/add.php?service_id=<?= $servicess['servId']; ?>&lawyer_id=<?= $servicess['lawyerId']; ?>" class="btn btn-primary">Order</a>
             <?php endif; ?>
             <p class="card-text"></p>
             <pre style="color:white;"></pre>

@@ -4,10 +4,11 @@ include '../general/env.php';
 include '../general/functions.php';
 
 $select = "
-SELECT orders.title AS ortitle, orders.description AS ordescription, services.title AS sertitle, users.name AS username
+SELECT orders.title AS ortitle, orders.description AS ordescription, services.title AS sertitle, users.name AS username, lawyers.name AS lawyername
 FROM orders
 JOIN services ON orders.service_id = services.id
-JOIN users ON orders.user_id = users.id;
+JOIN users ON orders.user_id = users.id
+JOIN lawyers ON orders.lawyer_id = lawyers.id;
 ";
 //get error messsage
 $ss = mysqli_query($connection, $select);
@@ -26,6 +27,7 @@ echo mysqli_error($connection);
                         <th scope="col">Order Description</th>
                         <th scope="col">Service Title</th>
                         <th scope="col">User Name</th>
+                        <th scope="col">Lawyer Name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,9 +37,9 @@ echo mysqli_error($connection);
                             <td><?= $orders['ordescription']; ?></td>
                             <td><?= $orders['sertitle']; ?></td>
                             <td><?= $orders['username']; ?></td>
+                            <td><?= $orders['lawyername']; ?></td>
                         </tr>
                     <?php endforeach; ?>
-                </tbody>
             </table>
         </div>
     </div>
