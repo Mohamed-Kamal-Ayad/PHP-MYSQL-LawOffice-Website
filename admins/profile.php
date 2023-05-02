@@ -15,7 +15,7 @@ if (isset($_GET['show'])) {
     $admin = mysqli_query($connection, $select);
     $row = mysqli_fetch_assoc($admin);
 }
-authAdmin($_SESSION['adminid']);
+authAdmin($_SESSION['adminRole']);
 ?>
 <h1 class="text-center">Your Profile</h1>
 <div class="container-fluid col-md-4 text-center">
