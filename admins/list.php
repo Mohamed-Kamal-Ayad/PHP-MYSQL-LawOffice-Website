@@ -16,7 +16,7 @@ if (isset($_GET['delete'])) {
     testMessage($d, "Delete Admin");
 }
 
-$selectAdmins = "SELECT * FROM `admins` JOIN `roles` ON admins.role = roles.id";
+$selectAdmins = "SELECT admins.id As id, admins.name As `name`, roles.description As description FROM `admins` JOIN roles ON roles.id = admins.role";
 $admins = mysqli_query($connection, $selectAdmins);
 authAdmin(1, 2, 3);
 ?>
