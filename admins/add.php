@@ -9,7 +9,7 @@ if (isset($_POST['add'])) {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $password = sha1($_POST['password']);
+    $password = md5($_POST['password']);
     $image_name = time() . $_FILES['image']['name'];
     $tmp_name = $_FILES['image']['tmp_name'];
     $location = "./upload/" . $image_name;
