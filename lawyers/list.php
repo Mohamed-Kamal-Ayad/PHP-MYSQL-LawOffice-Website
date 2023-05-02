@@ -28,7 +28,7 @@ if (isset($_GET['search'])) {
 }
 
 
-$selectUsers = "SELECT * FROM `lawyers` JOIN services ON services.lawyerid = lawyers.id";
+$selectUsers = "SELECT * FROM `lawyers` JOIN services ON services.id = lawyers.service_id";
 $lawyers = mysqli_query($connection, $selectUsers);
 authAdmin(1, 2, 3);
 ?>

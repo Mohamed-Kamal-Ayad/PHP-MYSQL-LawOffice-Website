@@ -4,7 +4,7 @@ include '../general/env.php';
 include '../general/functions.php';
 
 $select = "select * from services";
-$join = "SELECT services.id servId, services.title title, lawyers.name lawyername, lawyers.image img FROM services JOIN lawyers ON services.lawyerid = lawyers.id";
+$join = "SELECT services.id servId, services.title title, lawyers.name lawyername, lawyers.image img FROM services JOIN lawyers ON services.id = lawyers.service_id";
 $s = mysqli_query($connection, $select);
 $ss = mysqli_query($connection, $join)
 ?>
