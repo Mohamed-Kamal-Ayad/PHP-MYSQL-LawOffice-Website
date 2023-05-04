@@ -13,10 +13,8 @@ if (isset($_POST['add'])) {
 
     $insert = "INSERT INTO `users`(`id`,`name`, `age`, `address`, `phone`, `email`, `password`) VALUES (NULL,'$name',$age,'$address','$phone','$email','$password')";
     $s = mysqli_query($connection, $insert);
-    testMessage($s, "Insert User");
-    header("location:list.php#?return");
+    header("location: login.php");
 }
-authAdmin(1);
 ?>
     <h1 class="text-center"> Register </h1>
     <div class="container col-6">
