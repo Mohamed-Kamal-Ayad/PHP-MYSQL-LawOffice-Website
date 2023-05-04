@@ -126,6 +126,9 @@ if (isset($_GET['logout'])) {
                 <a href="/lawoffice/auth/loginUser.php" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login
                     User</a>
             </form>
+            <form class="form-inline ml-2 my-2 my-lg-0">
+                <a href="/lawoffice/auth/register.php" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sign Up</a>
+            </form>
         <?php endif; ?>
     </div>
 </nav>

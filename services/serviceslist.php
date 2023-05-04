@@ -10,20 +10,21 @@ $ss = mysqli_query($connection, $join)
 ?>
 
 <?php foreach ($ss as $servicess) : ?>
-<div class="container col-5">
-    <div class="card text-center" style="width: full;">
-        <img src="/lawyers/ <?= $servicess['img'] ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"><?= $servicess['title']; ?></h5>
-            <h5 class="card-title"><?= $servicess['lawyername']; ?></h5>
-            <?php if (isset($_SESSION['userid'])) : ?>
-                <a href="../orders/add.php?service_id=<?= $servicess['servId']; ?>&lawyer_id=<?= $servicess['lawyerId']; ?>" class="btn btn-primary">Order</a>
-            <?php endif; ?>
-            <p class="card-text"></p>
-            <pre style="color:white;"></pre>
+    <div class="container col-5">
+        <div class="card text-center" style="width: full;">
+            <img src="/lawyers/<?= $servicess['img']; ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?= $servicess['title']; ?></h5>
+                <h5 class="card-title"><?= $servicess['lawyername']; ?></h5>
+                <?php if (isset($_SESSION['userid'])) : ?>
+                    <a href="../orders/add.php?service_id=<?= $servicess['servId']; ?>&lawyer_id=<?= $servicess['lawyerId']; ?>"
+                       class="btn btn-primary">Order</a>
+                <?php endif; ?>
+                <p class="card-text"></p>
+                <pre style="color:white;"></pre>
+            </div>
         </div>
     </div>
-</div>
 <?php endforeach; ?>
 
 
